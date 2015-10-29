@@ -1,13 +1,23 @@
+# encoding: utf-8
 require 'clock'
 require 'support/string_extend'
+###
+# @author Dan Oberg <dan@cs1.com>
+# @class Guide
+# @version 0.0.1-beta
+###
 class Guide
-  class Config
-    @actions = %w[add all exit list new quit]
-    def self.actions; @actions; end
-  end
+  ###
+  # @attr [Array<String>] actions
+  ###
+  attr_accessor :actions
 
+  ###
+  # @param [String] initialize application with specified file path.
+  ###
   def initialize(path = nil)
     # locate the restarant text file at path
+    @actions = %w[add all exit list new quit]
     Clock.filepath = path
     if Clock.file_usable?
       puts 'Found Clock file.'
@@ -21,6 +31,9 @@ class Guide
     end
   end
 
+  ###
+  # @method launch!
+  ###
   def launch!
     introduction
     # action loop
@@ -32,9 +45,12 @@ class Guide
     conclusion
   end
 
+  ###
+  # @method current_action
+  ###
   def current_action
     action = nil
-    until Guide::Config.actions.include?(action)
+    until @actions.include?(action)
       puts 'Actions: ' + Guide::Config.actions.join(', ') if action
       print '> '
       user_response = gets.chomp
@@ -43,6 +59,9 @@ class Guide
     action
   end
 
+  ###
+  # @param [String] performs action.
+  ###
   def do_action(action)
     case action
     when 'list', 'all'
@@ -56,12 +75,18 @@ class Guide
     end
   end
 
+  ###
+  # @method list
+  ###
   def list
     output_action_header('Listing ball clocks')
     clocks = Clock.saved_clocks
     output_clock_table(clocks)
   end
 
+  ###
+  # @method add
+  ###
   def add
     output_action_header('Add a Clock')
     clock = Clock.build_using_questions
@@ -77,48 +102,65 @@ class Guide
     end
   end
 
+  ###
+  # @method introduction
+  ###
   def introduction
     puts "\n\n<<< Welcome to Dan\'s Ball Clock Machine >>> \n\n"
     puts "This is an interactive guide to help you tell time since an event\. Type add or new to run your first clock\.\n\n"
-    puts "Will tell you when a cycle repeats in day\(s\)\. Or result time of balls in the min\, five minute and hour tracks\.\n\n"
+    puts "Will tell you when a cycle repeats in day\(s\)\. Or result time of balls in the min\,
+            five minute and hour tracks\.\n\n"
   end
 
+  ###
+  # @method conclusion
+  ###
   def conclusion
     puts "\n<<< Tick Tock and Goodbye! >>>\n\n\n"
   end
 
+  # Private Methods
+
   private
 
+  ###
+  # @param [String] outputs a formatted string.
+  ###
   def output_action_header(text)
     puts "\n#{text.upcase.center(60)}\n\n"
   end
 
+  ###
+  # @param [Array] array of user created clocks.
+  ###
   def output_clock_table(clocks = [])
-    print "\|" + 'Name'.ljust(30)
-    print "\|" + 'Balls'.center(7)
-    print "\|" + 'Run Time'.center(10)
-    print "\|" + 'Minute Balls'.center(21)
-    print "\|" + 'Five Minute Balls'.center(46)
-    print "\|" + 'Hour Balls'.center(46)
-    print "\|" + 'Cycle Days'.center(12)
-    print "\|" + 'Result In JSON'.center(30) + "\|"
+    if clocks.empty?
+      puts 'No listings found. Type \"add\" to get started with your first clock.'
+    else
+      print "\|" + 'Name'.ljust(30)
+      print "\|" + 'Balls'.center(7)
+      print "\|" + 'Run Time'.center(10)
+      print "\|" + 'Minute Balls'.center(21)
+      print "\|" + 'Five Minute Balls'.center(46)
+      print "\|" + 'Hour Balls'.center(46)
+      print "\|" + 'Cycle Days'.center(12)
+      print "\|" + 'Result In JSON'.center(30) + "\|"
 
-    puts "\n" + '_' * 211 + "\n\n"
+      puts "\n" + '_' * 211 + "\n\n"
 
-    clocks.each do |clock|
-      line =  ' ' << clock.name.titleize.ljust(30)
-      line << "  #{clock.balls}".center(7)
-      line << "  #{clock.run_time}".center(10)
-      line << "  #{clock.min}".center(21)
-      line << "  #{clock.five_min}".center(46)
-      line << "  #{clock.hour}".center(46)
-      line << "  #{clock.cycle_days}".center(20)
-      line << "  #{clock.result}".ljust(30)
-      puts "\n"
-      puts line
+      clocks.each do |clock|
+        line =  ' ' << clock.name.titleize.ljust(30)
+        line << "  #{clock.balls}".center(7)
+        line << "  #{clock.run_time}".center(10)
+        line << "  #{clock.min}".center(21)
+        line << "  #{clock.five_min}".center(46)
+        line << "  #{clock.hour}".center(46)
+        line << "  #{clock.cycle_days}".center(20)
+        line << "  #{clock.result}".ljust(30)
+        puts "\n"
+        puts line
+      end
     end
-
-    puts 'No listings found. Type add to get started with your first clock.' if clocks.empty?
     puts "\n" + '_' * 211 + "\n\n"
   end
 end

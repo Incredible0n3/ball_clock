@@ -1,9 +1,28 @@
+  [![Build Status](https://travis-ci.org/Incredible0n3/ball_clock.svg)](https://travis-ci.org/Incredible0n3/ball_clock)
+
+  [![Code Climate](https://codeclimate.com/github/Incredible0n3/ball_clock/badges/gpa.svg)](https://codeclimate.com/github/Incredible0n3/ball_clock)
+
+  [![Test Coverage](https://codeclimate.com/github/Incredible0n3/ball_clock/badges/coverage.svg)](https://codeclimate.com/github/Incredible0n3/ball_clock/coverage)
+
+
                 ____       ___        ____      ____      __      __          ______
                |  _ \    /  _  \     |    \    /    \    |  |    |  |        /  12  \
-               | | | |  |  | |  |    | [] /   /   ^  \   |  |    |  |       |    ^   |
+               | | | |  |  | |  |    | [] /   /   ^  \   |  |    |  |       |    ^   |  
                | |_| |  |  |_|  |    | [] \  /   /\   \  |  |__  |  |__     |9  |-> 3|
                |____/[]  \ ___ /[]   |____/ /__ /  \ __\ |_____| |_____|     \___6__/ 
+
 Movement has long been used to measure time. For example, the ball clock is a simple device which keeps track of the passing minutes by moving ball-bearings. Each minute, a rotating arm removes a ball bearing from the queue at the bottom, raises it to the top of the clock and deposits it on a track leading to indicators displaying minutes, five-minutes and hours. These indicators display the time between 1:00 and 12:59, but without 'a.m.' or 'p.m.' indicators. Thus 2 balls in the minute indicator, 6 balls in the five-minute indicator and 5 balls in the hour indicator displays the time 5:32.
+
+# Requirements    
+                __   __     _     ____     ___   ___  \\  //  
+               |  \_/  |   / \   /  __|   /   \  \\ || \\//
+               |       |  / _ \ |  |__   | [ ] |  \\   //\\
+               |_/\_/\_| /_/ \_\ \____|   \___/ ||_\\ //  \\
+  
+  * Ruby -v 2.2.0+ # Use Rvm where possible `rvm install version_number`
+  * sdl2 # Use homebrew `brew doctor` then `brew install sdl2`
+  * Install Bundler `gem install bundler` then `bundle`
+
 
 # INFO
 
@@ -22,7 +41,7 @@ The Clock takes two parameters, the number of balls and the number of minutes to
 
 # Getting Started!
 
-Run `Ruby init.rb` from the command line.
+Run `rake run` from the command line.
 
 Once the app is running. Your available actions are [add, new, list, all, quit, exit].
 

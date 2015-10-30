@@ -1,9 +1,7 @@
   [![Build Status](https://travis-ci.org/Incredible0n3/ball_clock.svg)](https://travis-ci.org/Incredible0n3/ball_clock)
   [![Code Climate](https://codeclimate.com/github/Incredible0n3/ball_clock/badges/gpa.svg)](https://codeclimate.com/github/Incredible0n3/ball_clock)
   [![Test Coverage](https://codeclimate.com/github/Incredible0n3/ball_clock/badges/coverage.svg)](https://codeclimate.com/github/Incredible0n3/ball_clock/coverage)
-
-  [![GitHub](http://img.shields.io/badge/github-lsegal/yard-blue.svg)](http://github.com/incredible0n3/ball_clock)
-  [![Documentation](http://img.shields.io/badge/docs-rdoc.info-blue.svg)](http://rubydoc.org/gems/yard/frames)
+  [![Documentation](http://img.shields.io/badge/docs-rdoc.info-blue.svg)](http://www.rubydoc.info/github/Incredible0n3/ball_clock)
 
 
 

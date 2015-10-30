@@ -6,13 +6,13 @@ require 'json'
 ###
 class Clock
   # @constant [String] global constant filepath
-  @filepath = nil
+  @@filepath = nil
 
   ###
   # @param [String] filepath with tab seperated params as a .txt based database.
   ###
   def self.filepath=(path = nil)
-    @filepath = File.join(APP_ROOT, path)
+    @@filepath = File.join(APP_ROOT, path)
   end
 
   ###
@@ -28,7 +28,7 @@ class Clock
   attr_accessor :name, :balls, :run_time, :min, :five_min, :hour, :result, :cycle_days
 
   def self.file_exists?
-    if @filepath && File.exist?(@filepath)
+    if @@filepath && File.exist?(@@filepath)
       return true
     else
       return false
@@ -39,10 +39,10 @@ class Clock
   # @method self.file_usable?
   ###
   def self.file_usable?
-    return false unless @filepath
-    return false unless File.exist?(@filepath)
-    return false unless File.readable?(@filepath)
-    return false unless File.writable?(@filepath)
+    return false unless @@filepath
+    return false unless File.exist?(@@filepath)
+    return false unless File.readable?(@@filepath)
+    return false unless File.writable?(@@filepath)
     true
   end
 
@@ -51,7 +51,7 @@ class Clock
   ###
   def self.create_file
     # create the clock file
-    File.open(@filepath, 'w') unless file_exists?
+    File.open(@@filepath, 'w') unless file_exists?
     file_usable?
   end
 
@@ -61,7 +61,7 @@ class Clock
   def self.saved_clocks
     clocks = []
     if file_usable?
-      file = File.new(@filepath, 'r')
+      file = File.new(@@filepath, 'r')
       file.each_line do |line|
         clocks << Clock.new.import_line(line.chomp)
       end
@@ -135,7 +135,7 @@ class Clock
   def save
     return false unless Clock.file_usable? && !@name.empty?
     response = run_ball_clock(@balls, @run_time)
-    File.open(@filepath, 'a') do |file|
+    File.open(@@filepath, 'a') do |file|
       file.puts "#{[@name, @balls, @run_time, response].join("\t")}" + "\n"
     end
     true

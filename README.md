@@ -1,8 +1,4 @@
-  [![Build Status](https://travis-ci.org/Incredible0n3/ball_clock.svg)](https://travis-ci.org/Incredible0n3/ball_clock)
-
-  [![Code Climate](https://codeclimate.com/github/Incredible0n3/ball_clock/badges/gpa.svg)](https://codeclimate.com/github/Incredible0n3/ball_clock)
-
-  [![Test Coverage](https://codeclimate.com/github/Incredible0n3/ball_clock/badges/coverage.svg)](https://codeclimate.com/github/Incredible0n3/ball_clock/coverage)
+  [![Build Status](https://travis-ci.org/Incredible0n3/ball_clock.svg)](https://travis-ci.org/Incredible0n3/ball_clock) [![Code Climate](https://codeclimate.com/github/Incredible0n3/ball_clock/badges/gpa.svg)](https://codeclimate.com/github/Incredible0n3/ball_clock)  [![Test Coverage](https://codeclimate.com/github/Incredible0n3/ball_clock/badges/coverage.svg)](https://codeclimate.com/github/Incredible0n3/ball_clock/coverage)
 
 
                 ____       ___        ____      ____      __      __          ______

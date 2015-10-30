@@ -1,0 +1,13 @@
+engines:
+  rubocop:
+    enabled: true
+  bundler-audit:
+    enabled: true
+  fixme:
+    enabled: true
+ratings:
+  paths:
+  - "**.rb"
+  - Gemfile.lock
+exclude_paths:
+- spec/**/*

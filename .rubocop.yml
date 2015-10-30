@@ -4,6 +4,8 @@ AllCops:
     - 'vendor/**/*'
     - 'spec/fixtures/**/*'
     - 'spec/spec_helper.rb'
+    - 'lib/clock.rb:9'
+    - 'lib/clock.rb:15'
 
 Style/Encoding:
   Enabled: true
@@ -27,4 +29,7 @@ Style/RedundantSelf:
   Enabled: false
 
 Style/RedundantReturn:
+  Enabled: false
+
+Style/ClassVars:
   Enabled: false

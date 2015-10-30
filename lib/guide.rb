@@ -51,7 +51,7 @@ class Guide
   def current_action
     action = nil
     until @actions.include?(action)
-      puts 'Actions: ' + Guide::Config.actions.join(', ') if action
+      puts 'Actions: ' + @actions.join(', ') if action
       print '> '
       user_response = gets.chomp
       action = user_response.downcase.strip
@@ -108,8 +108,7 @@ class Guide
   def introduction
     puts "\n\n<<< Welcome to Dan\'s Ball Clock Machine >>> \n\n"
     puts "This is an interactive guide to help you tell time since an event\. Type add or new to run your first clock\.\n\n"
-    puts "Will tell you when a cycle repeats in day\(s\)\. Or result time of balls in the min\,
-            five minute and hour tracks\.\n\n"
+    puts "Will tell you when a cycle repeats in day\(s\)\. Shows min\, five minute and hour tracks when complete\.\n\n"
   end
 
   ###

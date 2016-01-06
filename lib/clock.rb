@@ -2,11 +2,20 @@
 require 'json'
 ###
 # @author Dan Oberg <dan@cs1.com>
+# @licence MIT
 # @class Clock
+# Useage: `ruby -Ilib ./bin/clock {27,0}` or `ruby -Ilib ./bin/clock {30,325}`
 ###
 class Clock
   ###
-  # @method add_minute
+  # @method add_minute adds a ball from the begining of the main
+  # queue to the minute track. Once the minute track is full
+  # the ball will drop to the five minute track triggering in 
+  # reverse order the minute track to deposit to the main queue.
+  # When the five minute track is full it will pass the next ball from
+  # from the main queue to the hour track which triggers the five min
+  # track to drop its balls in reverse order to the main queue. When
+  # hour track is full will drop balls in reverse order to the main queue.
   ###
   def self.add_minute
     if @min_track.length < 4
@@ -45,16 +54,11 @@ class Clock
   end
 
   ###
-  # @param [Fixnum, Fixnum] runs clock with number of balls and optionally a runtime.
+  # @param [Fixnum, Fixnum] runs clock with number of balls to start with and optionally a runtime.
   # @return [Json] json hash for min, five_min, hour and main queues. If no runtime
   #   is provided will calculate days tell que repeats.
   ###
   def self.run_ball_clock(balls, run_time)
-    @min = []
-    @five_min = []
-    @hour = []
-    @main = []
-    @result = []
     @current_que = []
     @hours_passed = '0'.to_i
     @repeat = false

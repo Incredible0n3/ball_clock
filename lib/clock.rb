@@ -10,7 +10,7 @@ class Clock
   ###
   # @method add_minute adds a ball from the begining of the main
   # queue to the minute track. Once the minute track is full
-  # the ball will drop to the five minute track triggering in 
+  # the ball will drop to the five minute track triggering in
   # reverse order the minute track to deposit to the main queue.
   # When the five minute track is full it will pass the next ball from
   # from the main queue to the hour track which triggers the five min
@@ -22,27 +22,21 @@ class Clock
       @min_track << @current_que.shift
     elsif @five_min_track.length < 11
       @five_min_track << @current_que.shift
-      reverse_track = @min_track.reverse
-      @current_que.concat(reverse_track)
+      @current_que.concat(@min_track.reverse)
       @min_track = []
     elsif @hour_track.length < 11
       @hour_track << @current_que.shift
-      reverse_track = @min_track.reverse
-      @current_que.concat(reverse_track)
+      @current_que.concat(@min_track.reverse)
       @min_track = []
-      reverse_five_min_track = @five_min_track.reverse
-      @current_que.concat(reverse_five_min_track)
+      @current_que.concat(@five_min_track.reverse)
       @five_min_track = []
     else
       que_ball = @current_que.shift
-      reverse_track = @min_track.reverse
-      @current_que.concat(reverse_track)
+      @current_que.concat(@min_track.reverse)
       @min_track = []
-      reverse_five_min_track = @five_min_track.reverse
-      @current_que.concat(reverse_five_min_track)
+      @current_que.concat(@five_min_track.reverse)
       @five_min_track = []
-      reverse_hour_track = @hour_track.reverse
-      @current_que.concat(reverse_hour_track)
+      @current_que.concat(@hour_track.reverse)
       @current_que << que_ball
       @hour_track = []
       @hours_passed += 12
@@ -50,13 +44,13 @@ class Clock
       if @current_que == @start_order
         @repeat = true
       end
-    end 
+    end
   end
 
   ###
   # @param [Fixnum, Fixnum] runs clock with number of balls to start with and optionally a runtime.
   # @return [Json] json hash for min, five_min, hour and main queues. If no runtime
-  #   is provided will calculate days tell que repeats.
+  #   is provided it will calculate the days tell the que repeats.
   ###
   def self.run_ball_clock(balls, run_time)
     @current_que = []
@@ -82,9 +76,8 @@ class Clock
         add_minute
         min_left -= 1
       end
-      json_clock = { min: @min_track, fiveMin: @five_min_track, hour: @hour_track, main: @current_que}
-      result = JSON.generate(json_clock)
+      json_clock = { min: @min_track, fiveMin: @five_min_track, hour: @hour_track, main: @current_que }
     end
-    result
+    JSON.generate(json_clock)
   end
 end

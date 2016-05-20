@@ -1,6 +1,6 @@
 # Ignore bundler config.
 /.bundle
 
-#Ignore defualts
+#Ignore defaults
 *.gem
 .DS_Store

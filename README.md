@@ -37,9 +37,9 @@ The Clock takes two parameters, the number of balls and the number of minutes to
 # Using the Gem!
 
   * `ruby -Ilib ./bin/clock {27,0}` or `ruby -Ilib ./bin/clock {30,325}` # if cloned
-  * `ruby -Ilib ~/.rvm/gems/ruby-2.2.3/gems/danno_ball_clock-0.0.3/bin/clock {33,90}` # if installed via `gem install`
+  * `ruby -Ilib ~/.rvm/gems/ruby-2.2.3/gems/danno_ball_clock-0.0.4/bin/clock {33,90}` # if installed via `gem install`
 
 # Testing the Gem!
 
   * `rake` # if cloned
-  * `cd ~/.rvm/gems/ruby-2.2.3/gems/danno_ball_clock_0.0.3` then `rake` # if installed via `gem install`
+  * `cd ~/.rvm/gems/ruby-2.2.3/gems/danno_ball_clock_0.0.4` then `rake` # if installed via `gem install`

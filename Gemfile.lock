@@ -1,19 +1,23 @@
 PATH
   remote: .
   specs:
-    danno_ball_clock (0.0.3)
+    danno_ball_clock (0.0.4)
 
 GEM
   remote: https://rubygems.org/
   specs:
+    json (1.8.3)
     minitest (5.9.0)
+    rake (11.1.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   danno_ball_clock!
+  json
   minitest
+  rake
 
 BUNDLED WITH
    1.10.6

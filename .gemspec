@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'danno_ball_clock'
-  s.version     = '0.0.3'
+  s.version     = '0.0.4'
   s.date        = %q{2015-10-01}
   s.summary     = "Ball Clock"
   s.description = "A simple ball clock in ruby. Input a number of balls to start with and optionally a run time."

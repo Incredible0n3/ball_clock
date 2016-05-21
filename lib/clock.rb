@@ -8,7 +8,8 @@ require 'json'
 ###
 class Clock
   ###
-  # @method add_minute adds a ball from the begining of the main
+  # @method add_minute
+  # adds a ball from the begining of the main
   # queue to the minute track. Once the minute track is full
   # the ball will drop to the five minute track triggering in
   # reverse order the minute track to deposit to the main queue.
@@ -50,7 +51,7 @@ class Clock
   ###
   # @param [Fixnum, Fixnum] runs clock with number of balls to start with and optionally a runtime.
   # @return [Json] json hash for min, five_min, hour and main queues. If no runtime
-  #   is provided it will calculate the days tell the que repeats.
+  # is provided it will calculate the days tell the que repeats.
   ###
   def self.run_ball_clock(balls, run_time)
     @current_que = []
@@ -70,14 +71,13 @@ class Clock
       until @repeat == true
         add_minute
       end
-      result = puts "Clock cycles in: #{@cycle_days} day\(s\)\."
+      "Clock cycles in: #{@cycle_days} day\(s\)\."
     else
       until min_left == 0
         add_minute
         min_left -= 1
       end
-      json_clock = { min: @min_track, fiveMin: @five_min_track, hour: @hour_track, main: @current_que }
+      JSON.generate(min: @min_track, fiveMin: @five_min_track, hour: @hour_track, main: @current_que)
     end
-    JSON.generate(json_clock)
   end
 end
